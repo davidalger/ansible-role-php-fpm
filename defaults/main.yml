@@ -1,0 +1,20 @@
+---
+# Valid values are 55, 56, 70 and 71
+php_version: 70
+
+# List of php modules to install
+php_modules:
+  - cli
+  - common
+  - devel
+  - fpm
+  - gd
+  - imap
+  - mbstring
+  - mcrypt
+  - mysqlnd
+  - opcache
+  - pdo
+  - soap
+  - xml
+  - xmlrpc

@@ -1,0 +1,13 @@
+---
+- name: install php-fpm
+  yum: name=php{{ php_version }}u-fpm
+
+- name: install php modules
+  yum: name=php{{ php_version }}u-{{ item }}
+  with_items: "{{ php_modules }}"
+
+- name: start php-fpm service
+  service:
+    name: php-fpm
+    state: started
+    enabled: yes
