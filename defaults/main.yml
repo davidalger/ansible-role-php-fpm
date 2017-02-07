@@ -4,17 +4,23 @@ php_version: 70
 
 # List of php modules to install
 php_modules:
+  - bcmath
   - cli
   - common
   - devel
   - fpm
   - gd
   - imap
+  - intl
+  - json
   - mbstring
   - mcrypt
   - mysqlnd
   - opcache
   - pdo
+  - pear
+  - pecl-redis
+  - process
   - soap
   - xml
   - xmlrpc
