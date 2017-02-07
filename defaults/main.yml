@@ -3,7 +3,7 @@
 php_version: 70
 
 # List of php modules to install
-php_modules:
+php_default_modules:
   - bcmath
   - cli
   - common
@@ -24,6 +24,8 @@ php_modules:
   - soap
   - xml
   - xmlrpc
+php_additional_modules: []
+php_modules: "{{ php_default_modules }} + {{ php_additional_modules }}"
 
 php_fpm_pool: www-data
 
