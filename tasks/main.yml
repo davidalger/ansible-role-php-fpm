@@ -16,7 +16,7 @@
   notify: restart php-fpm
 
 - name: override default php-fpm pool
-  copy:
+  template:
     src: www.conf
     dest: /etc/php-fpm.d/www.conf
     owner: root
