@@ -22,7 +22,6 @@
     owner: root
     group: root
     mode: 0600
-    backup: yes
   notify: reload php-fpm
 
 - name: configure php-fpm pool
@@ -32,7 +31,6 @@
     owner: root
     group: root
     mode: 0600
-    backup: yes
   notify: reload php-fpm
 
 - name: start php-fpm service
