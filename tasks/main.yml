@@ -15,7 +15,7 @@
   with_dict: "{{ php_fpm_global_ini }}"
   notify: restart php-fpm
 
-- name: override default php-fpm pool
+- name: clear default pool
   template:
     src: www.conf
     dest: /etc/php-fpm.d/www.conf
@@ -24,7 +24,7 @@
     mode: 0600
   notify: reload php-fpm
 
-- name: configure php-fpm pool
+- name: "{{ php_fpm_pool }} : configure php-fpm pool"
   template:
     src: pool.conf
     dest: /etc/php-fpm.d/{{ php_fpm_pool }}.conf
@@ -33,7 +33,9 @@
     mode: 0600
   notify: reload php-fpm
 
-- name: start php-fpm service
+- include: configure-logs.yml
+
+- name: start php-fpm
   service:
     name: php-fpm
     state: started

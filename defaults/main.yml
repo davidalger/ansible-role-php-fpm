@@ -49,11 +49,12 @@ php_fpm_catch_workers_output: "yes"
 
 php_fpm_log_dir: /var/log/php-fpm
 php_fpm_slowlog: "{{ php_fpm_log_dir }}/{{ php_fpm_pool }}-slow.log"
+php_fpm_errorlog: "{{ php_fpm_log_dir }}/{{ php_fpm_pool }}-error.log"
 
 php_fpm_default_ini:
   php_flag[display_errors]: "off"
   php_admin_flag[log_errors]: "on"
-  php_admin_value[error_log]: "{{ php_fpm_log_dir }}/{{ php_fpm_pool }}-error.log"
+  php_admin_value[error_log]: "{{ php_fpm_errorlog }}"
   php_admin_value[memory_limit]: 768M
   php_admin_value[max_execution_time]: "3600"
 php_fpm_additional_ini: {}
