@@ -31,3 +31,11 @@
     mode: 0751
   notify:
     - restart php-fpm
+
+- name: configure logrotate.d/php-fpm
+  template:
+    src: logrotate
+    dest: /etc/logrotate.d/php-fpm
+    owner: root
+    group: root
+    mode: 0644
