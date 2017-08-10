@@ -19,7 +19,6 @@ php_default_modules:
   - mysqlnd
   - opcache
   - pdo
-  - pear
   - pecl-redis
   - process
   - soap
