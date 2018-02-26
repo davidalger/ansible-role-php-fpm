@@ -33,7 +33,7 @@
     mode: 0600
   notify: reload php-fpm
 
-- include: configure-logs.yml
+- import_tasks: configure-logs.yml
 
 - name: start php-fpm
   service:
