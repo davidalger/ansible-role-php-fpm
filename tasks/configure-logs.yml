@@ -15,22 +15,20 @@
     state: file
     owner: "{{ php_fpm_owner }}"
     group: "{{ php_fpm_group }}"
-    mode: 0660
+    mode: 0600
   with_items:
     - "{{ php_fpm_errorlog }}"
     - "{{ php_fpm_slowlog }}"
   notify:
     - restart php-fpm
 
-- name: enforce {{ php_fpm_log_dir }} permissions
-  file:
+- name: "{{ php_fpm_pool }} : configure ACL for log access"
+  acl:
     path: "{{ php_fpm_log_dir }}"
-    state: directory
-    owner: "{{ php_fpm_sys_owner }}"
-    group: "{{ php_fpm_sys_group }}"
-    mode: 0751
-  notify:
-    - restart php-fpm
+    entity: "{{ php_fpm_owner }}"
+    etype: user
+    permissions: rx
+    state: present
 
 - name: configure logrotate.d/php-fpm
   template:
