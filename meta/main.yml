@@ -3,7 +3,7 @@ dependencies:
   - davidalger.repo_ius
 
 galaxy_info:
-  role_name: repo_ius
+  role_name: php_fpm
   author: David Alger
   description: PHP-FPM from IUS RPMs on RHEL / CentOS Linux
   license: MIT
