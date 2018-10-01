@@ -1,8 +1,10 @@
 ---
-- include_vars: opcache.yml
+- name: include php-opcache default settings
+  include_vars: opcache.yml
 
 # php72u-mcrypt is not a valid package, so remove it from module list on PHP 7.2
-- set_fact:
+- name: drop mcrypt ext when depoying 7.2 or later
+  set_fact:
     php_default_modules: "{{ php_default_modules | difference(['mcrypt']) }}"
   when: php_version >= 72
 
@@ -13,7 +15,8 @@
   yum: name=php{{ php_version }}u-{{ item }} enablerepo={{ php_enablerepo }}
   with_items: "{{ php_modules }}"
 
-- set_fact:
+- name: combine php-opcache defaults user provided settings
+  set_fact:
     php_ext_opcache: "{{ php_ext_opcache_defaults | combine(php_ext_opcache) }}"
 
 - name: configure php.ini
