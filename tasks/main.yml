@@ -8,6 +8,17 @@
     php_default_modules: "{{ php_default_modules | difference(['mcrypt']) }}"
   when: php_version >= 72
 
+- name: create {{ php_fpm_owner }} user
+  user:
+    name: "{{ php_fpm_owner }}"
+    state: present
+
+# There is no guarantee this group belongs to the above user, so make sure it exists as well
+- name: create {{ php_fpm_group }} group
+  group:
+    name: "{{ php_fpm_group }}"
+    state: present
+
 - name: install php-fpm
   yum: name=php{{ php_version }}u-fpm enablerepo={{ php_enablerepo }}
 
