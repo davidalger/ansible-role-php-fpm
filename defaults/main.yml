@@ -1,6 +1,6 @@
 ---
 # Valid values are 55, 56, 70, 71 and 72
-php_version: 70
+php_version: 72
 php_enablerepo: null
 
 # List of php modules to install
