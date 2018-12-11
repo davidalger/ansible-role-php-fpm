@@ -2,7 +2,7 @@
 
 zend_extension=opcache.so
 
-{% for key, value in php_ext_opcache.iteritems()|sort %}
+{% for key, value in php_ext_opcache.items() | list | sort %}
 {%   if value is sameas true %}
 opcache.{{ key }}=1
 {%   elif value is sameas false %}
