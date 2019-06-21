@@ -15,7 +15,8 @@ php_default_modules:
   - intl
   - json
   - mbstring
-  - mcrypt
+  - mcrypt      # installed on 7.1 and prior
+  - sodium      # installed on 7.2 and later
   - mysqlnd
   - opcache
   - pdo

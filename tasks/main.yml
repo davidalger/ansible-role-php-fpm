@@ -3,10 +3,16 @@
   include_vars: opcache.yml
 
 # php72u-mcrypt is not a valid package, so remove it from module list on PHP 7.2
-- name: drop mcrypt ext when depoying 7.2 or later
+- name: drop mcrypt ext when depoying 7.2 or later versions
   set_fact:
     php_default_modules: "{{ php_default_modules | difference(['mcrypt']) }}"
   when: php_version >= 72
+
+# php72u-sodium is the only package for sodium available, remove it from module list on PHP 7.1 and earlier
+- name: drop sodium ext when depoying 7.1 or earlier versions
+  set_fact:
+    php_default_modules: "{{ php_default_modules | difference(['sodium']) }}"
+  when: php_version < 72
 
 - name: create {{ php_fpm_owner }} user
   user:
