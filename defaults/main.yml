@@ -11,7 +11,6 @@ php_default_modules:
   - devel
   - fpm
   - gd
-  - imap
   - intl
   - json
   - mbstring
