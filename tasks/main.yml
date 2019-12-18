@@ -2,6 +2,17 @@
 - name: include php-opcache default settings
   include_vars: opcache.yml
 
+# php73 drops the 'u' from the prefix
+- name: configure package prefix [73 or greater]
+  set_fact:
+    php_pkg_prefix: "php{{ php_version }}"
+  when: php_version >= 73
+
+- name: configure package prefix [72 or lower]
+  set_fact:
+    php_pkg_prefix: "php{{ php_version }}u"
+  when: php_version <= 72
+
 # php72u-mcrypt is not a valid package, so remove it from module list on PHP 7.2
 - name: drop mcrypt ext when depoying 7.2 or later versions
   set_fact:
@@ -26,10 +37,10 @@
     state: present
 
 - name: install php-fpm
-  yum: name=php{{ php_version }}u-fpm enablerepo={{ php_enablerepo }}
+  yum: name={{ php_pkg_prefix }}-fpm enablerepo={{ php_enablerepo }}
 
 - name: install php modules
-  yum: name=php{{ php_version }}u-{{ item }} enablerepo={{ php_enablerepo }}
+  yum: name={{ php_pkg_prefix }}-{{ item }} enablerepo={{ php_enablerepo }}
   with_items: "{{ php_modules }}"
 
 - name: combine php-opcache defaults user provided settings

@@ -14,7 +14,7 @@ None.
 
     php_version: 72
 
-Any php version supported by IUS RPMs may be specified: 55, 56, 70, 71, 72, etc. For older versions, `php_enablerepo: ius-archive` will also need to be specified.
+Any php version supported by IUS RPMs may be specified: 55, 56, 70, 71, 72, 73, etc. For older versions, `php_enablerepo: ius-archive` will also need to be specified.
 
 See `defaults/main.yml` for complete list of variables available to customize the php-fpm installation.
 
