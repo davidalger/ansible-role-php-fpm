@@ -1,6 +1,6 @@
 ---
 dependencies:
-  - davidalger.repo_ius
+  - { role: davidalger.repo_ius, when: use_davidalger_repo_ius | default(true) }
 
 galaxy_info:
   role_name: php_fpm
