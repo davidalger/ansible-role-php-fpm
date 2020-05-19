@@ -37,10 +37,10 @@
     state: present
 
 - name: install php-fpm
-  yum: name={{ php_pkg_prefix }}-fpm enablerepo={{ php_enablerepo }}
+  package: name={{ php_pkg_prefix }}-fpm enablerepo={{ php_enablerepo }}
 
 - name: install php modules
-  yum: name={{ php_pkg_prefix }}-{{ item }} enablerepo={{ php_enablerepo }}
+  package: name={{ php_pkg_prefix }}-{{ item }} enablerepo={{ php_enablerepo }}
   with_items: "{{ php_modules }}"
 
 - name: combine php-opcache defaults user provided settings
