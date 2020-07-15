@@ -1,6 +1,6 @@
 # Ansible Role: PHP-FPM
 
-[![Build Status](https://travis-ci.org/davidalger/ansible-role-php-fpm.svg?branch=master)](https://travis-ci.org/davidalger/ansible-role-php-fpm)
+[![Build Status](https://travis-ci.com/davidalger/ansible-role-php-fpm.svg?branch=master)](https://travis-ci.com/davidalger/ansible-role-php-fpm)
 
 Installs php-fpm from [IUS Community Project](http://ius.io) RPMs on RHEL / CentOS 7. Where archived verions of php are required, the ius-archive repository may be enabled.
 
